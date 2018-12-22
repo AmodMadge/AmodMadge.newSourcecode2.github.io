@@ -1,0 +1,18 @@
+<div class="row" *ngIf="coinData">
+  <div style="margin: 20px 20px; color:purple;" class="col-12">
+    <h1> {{coinData.data.name}} <small class="cus-small"> ( {{coinData.data.symbol}} )</small> </h1> 
+  </div>
+</div>
+<div style="margin: 20px; text-align: center;" class="col-12">
+  <h1>Price Chart View</h1>
+</div>
+<div class="container">
+  <div class="row">       
+    <div style="width: 500px; height: auto;" [hidden]="!LineChart" class="col-12">
+          <canvas id="lineChart"></canvas>
+        </div>
+        <div style="margin-top: 20px;" class="col-12">
+          <button class="btn btn-primary" (click)="goBack()">Back</button>
+        </div>
+  </div>
+</div> 

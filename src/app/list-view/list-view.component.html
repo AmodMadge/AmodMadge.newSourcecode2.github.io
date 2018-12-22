@@ -1,0 +1,61 @@
+<div class="Container">
+  <h1 class="t-2" style="text-align: center">Crypto Currency Table</h1>
+    <div *ngIf="arr.length > 0">
+    <div class="row">
+      <div class="col-12">
+        <form class="form-row my-4">
+          <div class="container col-sm-6 col-md-4 l-2">
+            <label for="Price"><b>Price:</b></label>
+            <ion-range-slider #sliderElement type="double" max="750" min=".00001" from_shadow="true" to_shadow="true"
+              grid="true" grid_num="4" prefix=" " postfix="" decorate_both="" (onFinish)="myOnFinish($event, 'price')"></ion-range-slider>
+          </div>
+          <div class="container  col-sm-6 col-md-4 l-2">
+            <label for="Cap"><b>Market Cap:</b></label>
+            <ion-range-slider #sliderElement type="double" max="2800000000" min="10000000" from_shadow="true" to_shadow="true"
+              grid="true" grid_num="3" prefix=" " postfix="" decorate_both="false" (onFinish)="myOnFinish($event, 'marketCap')"></ion-range-slider>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- favourite checkbox -->
+    <div class="col-md-4 col-sm-12" style="padding-top:20px;">
+      <div *ngIf="compareView">
+          <button class="btn btn-primary" (click)="compareCurrencyHandler()">Compare</button>
+        </div>
+    </div>
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"  style="text-align:center;">No.</th>
+          <th scope="col"  style="text-align:left;">Name</th>
+          <th scope="col"  style="text-align:left;">Symbol</th>
+          <th scope="col"  style="text-align:center;" (click)="sort('quotes.USD.price')">Current Price  <span ><i class="fa fa-sort-down"></i></span> </th>
+          <th scope="col"   style="text-align:center;"(click)="sort('quotes.USD.market_cap')">Market Cap <span ><i class="fa fa-sort-up"></i></span> </th>
+          <th scope="col">Favourite</th>
+          <th scope="col">Price Chart</th>        
+        </tr>
+      </thead>
+      <tbody>
+        <tr long-press (onLongPress)="initComapareView()" (press)="initComapareView()" *ngFor="let coins of arr | orderBy: key : reverse | paginate: { itemsPerPage: 10, currentPage: p };  index as i">
+          <td style="text-align:center;"> {{ i + 1 }}
+            <input type="checkbox" *ngIf="compareView" (change)="manageComparisionList(coins.id)">
+          </td>  
+          <td  style="text-align:left;">{{ coins.name }}</td>
+          <td  style="text-align:left;">{{ coins.symbol }}</td>
+          <td  style="text-align:center;">{{ coins.quotes.USD.price | currency }}</td>
+          <td  style="text-align:center;">{{ coins.quotes.USD.market_cap | currency }}</td>
+          <td  style="text-align:center; cursor: pointer;">
+            <i class="fa fa-bookmark"  (click)="onSelect(coins.id)" [ngClass]="{active: isActive(coins.id)}">
+            </i>
+          </td>
+          <td style="cursor: pointer;" [routerLink]="['/priceChart',coins.id]" class="gochart">
+            <span class="text-primary">{{ coins.name }} Price Graph </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    
+  </div>
+</div>

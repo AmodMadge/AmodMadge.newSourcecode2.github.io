@@ -1,0 +1,5 @@
+[1122/131207.863:ERROR:crash_report_database_win.cc(428)] unexpected header
+[1122/162542.535:ERROR:crash_report_database_win.cc(428)] unexpected header
+[1122/165219.292:ERROR:crash_report_database_win.cc(428)] unexpected header
+[1220/130149.675:ERROR:settings.cc(319)] Settings magic is not 1129342067
+[1220/145627.125:ERROR:http_transport_win.cc(273)] WinHttpSendRequest: The operation completed successfully. (0x0)

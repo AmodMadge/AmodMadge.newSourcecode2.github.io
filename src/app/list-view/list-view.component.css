@@ -1,0 +1,38 @@
+h1 
+{
+    font-weight: 500;
+    font-family:san-serif;
+    font-style: italic;
+}
+.fa-bookmark
+{
+    color: #ccc;
+}
+.fa-bookmark.active 
+{
+    color: blue;
+}
+.mr-2-px 
+{
+    margin-right: 3px;
+}
+.cursor-pointer 
+{
+    cursor: pointer;
+}
+.b-2 
+{
+    margin-bottom: 2rem !important;
+}
+.t-2 
+{
+    margin-top: 2rem !important;
+}
+.l-2 
+{
+    margin-left: 4rem !important;
+}
+label 
+{
+    font: 1.5em sans-serif;
+}
